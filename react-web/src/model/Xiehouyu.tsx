@@ -1,0 +1,4 @@
+type Xiehouyu = {
+    riddle: '',
+    answer: '',
+}

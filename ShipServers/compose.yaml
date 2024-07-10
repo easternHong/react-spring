@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'books_center_db'
+    environment:
+      - POSTGRES_DB=books
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=root
+    ports:
+      - '5432'

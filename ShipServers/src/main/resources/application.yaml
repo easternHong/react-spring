@@ -1,0 +1,35 @@
+server:
+#  port: 8081
+spring:
+  datasource:
+    #57115 需要根据docker 实例的port一致
+    url: jdbc:postgresql://localhost:51861/books_center_db
+    username: root
+    password: 123456
+    initial-size: 100
+    max-idle: 60
+    max-wait: 10000
+    min-idle: 20
+    max-active: 500
+  jpa:
+    database: postgresql
+    generate-ddl: false
+    show-sql: false
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        format_sql: true
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models

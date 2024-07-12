@@ -1,6 +1,7 @@
 import {useParams} from "react-router-dom";
 
 
+
 export default function About() {
     const _useParams = useParams();
     console.log('_useParams:' + JSON.stringify(_useParams))

@@ -11,3 +11,11 @@ export const product_idioms = pgTable("idioms", {
 })
 
 export type ProductIdiom = typeof product_idioms.$inferSelect;
+
+export const product_xiehouyu = pgTable("xiehouyu", {
+    id: serial('id').primaryKey(),
+    riddle: varchar("riddle", {length: 255}),
+    answer: varchar('answer', {length: 255}).notNull(),
+})
+
+export type ProductXiehouyu = typeof product_xiehouyu.$inferSelect;

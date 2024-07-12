@@ -10,13 +10,13 @@ export default function StudyLayout({children}: { children: React.ReactNode; }) 
     const [mobile, setMobile] = useState(false);
     const sidebar = useSidebar();
     return (
-        <div className="relative flex flex-row w-full h-screen min-h-[35rem]">
+        <div className="relative flex flex-row w-full h-screen min-h-[25rem]">
             <Sidebar
                 onToggle={(state: SidebarState) => {
                     setExpanded(state.expanded);
                     setMobile(state.mobile);
                 }}
-                className="absolute w-[5rem]">
+                className="absolute w-[3rem]">
                 <Sidebar.Head>
                     {/*<Sidebar.Head.Logo>*/}
                         {/*<Image src="/logo.png" width={48} height={48} alt="Rewind-UI"/>*/}
@@ -44,7 +44,7 @@ export default function StudyLayout({children}: { children: React.ReactNode; }) 
 
             <main
                 className={`transition-all transform duration-100 text-slate-700 flex w-full flex-col ${
-                    expanded ? 'md:ml-64' : 'md:ml-10'
+                    expanded ? 'md:ml-60' : 'md:ml-10'
                 }`}>
                 {/*{mobile && (*/}
                 {/*    <Overlay*/}

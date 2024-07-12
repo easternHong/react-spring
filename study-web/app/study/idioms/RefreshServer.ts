@@ -1,9 +1,9 @@
 "use server"
 import {revalidatePath} from "next/cache"
 
-const clearCachesByServerAction = (path: string) => {
+const refreshServerSide = (path: string) => {
+    console.log('refreshServerSide', path)
     try {
-        console.log('hello', path)
         if (path) {
             revalidatePath(path)
         } else {
@@ -11,7 +11,7 @@ const clearCachesByServerAction = (path: string) => {
             revalidatePath("/[lang]")
         }
     } catch (error) {
-        console.error("clearCachesByServerAction=> ", error)
+        console.error("refreshServerSide=> ", error)
     }
 }
-export default clearCachesByServerAction
+export default refreshServerSide

@@ -4,6 +4,7 @@ import {ProductXiehouyu} from "@/db/schema";
 import {useRef} from "react";
 import {Tts} from "@/components/model/Tts";
 import {useRouter} from "next/navigation";
+import audioPlayer from "@/components/AudioPlayer";
 
 export function XiehouyuLayout(props: { props: ProductXiehouyu }) {
     const current = props.props
@@ -32,7 +33,7 @@ export function XiehouyuLayout(props: { props: ProductXiehouyu }) {
                     className='shadow mt-20 w-1/6 hover:bg-red-500 text-center bg-red-200 p-2 rounded'>
                     下一个
                 </button>
-                <Tts {...ttsProp}/>
+                {audioPlayer.isEnable() && <Tts {...ttsProp}/>}
             </div>
         </div>
     )

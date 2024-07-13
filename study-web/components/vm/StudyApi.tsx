@@ -28,4 +28,7 @@ export class StudyApi {
         const ret = await fetch(this.baseUrl + '/study/xiehouyu/random', this.defaultInit)
         return await ret.json()
     }
+
+
+
 }

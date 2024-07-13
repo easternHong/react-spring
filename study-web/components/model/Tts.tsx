@@ -1,11 +1,5 @@
 import {useSpeech} from "react-text-to-speech";
 import {RefObject} from "react";
-
-
-export type TTsContent = {
-    content?: string
-}
-
 export const Tts = (ttsProps: {
     className: string,
     button: string,

@@ -3,7 +3,7 @@ import {db} from "@/db/db";
 import {product_idioms, ProductIdiom} from "@/db/schema";
 import React from "react";
 import {count, eq} from "drizzle-orm";
-import {getRandomInt} from "@/components/service/RandomUtils";
+import {getRandomInt, randomIdiomArray} from "@/components/service/RandomUtils";
 
 export default async function IdiomsLayout() {
     const cc = await db.select({count: count()}).from(product_idioms)
@@ -16,9 +16,10 @@ export default async function IdiomsLayout() {
     if (!item || item.word == null) return (
         <></>
     )
-
+    const place = getRandomInt(item.word.length)
+    const answer = randomIdiomArray(item.word[place])
     console.log('IdiomsLayout refresh????', item)
     return (
-        <IdiomsLayoutDetails props={item}/>
+        <IdiomsLayoutDetails props={item} place={place} answer={answer}/>
     )
 }

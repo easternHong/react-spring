@@ -16,6 +16,9 @@ export default function Header() {
                     href="/study">学习中心</Link>
                 <Link
                     className="hover:bg-blue-200 text-cyan-800  m-2 py-2 px-4"
+                    href="/movie">Moive</Link>
+                <Link
+                    className="hover:bg-blue-200 text-cyan-800  m-2 py-2 px-4"
                     href="/about">About</Link>
                 <Link title="Looking forward to your contribution.❤️" href="https://github.com/daimajia/huntscreens"
                       target="__blank">

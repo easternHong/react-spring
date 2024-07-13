@@ -1,9 +1,13 @@
 export class AudioPlayer {
 
-    private enable = true
+    private enable = false
 
     enablePlay(enable: boolean) {
         this.enable = enable
+    }
+
+    isEnable() {
+        return this.enable
     }
 
     playAudio(url: string) {

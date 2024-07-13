@@ -10,7 +10,8 @@ import audioPlayer from "@/components/AudioPlayer";
 
 type Ref = {
     props: ProductIdiom,
-    index: number
+    index: number,
+    answer: string[]
 }
 
 let hideIndex = -2
@@ -18,10 +19,11 @@ let hideIndex = -2
 function IdiomsTopic(props: { props: Ref }) {
     const current = props.props.props
     const place = props.props.index
-    const answer = randomIdiomArray(current.word[place])
+    const answer = props.props.answer
     const [, setHideIndex] = useState(0)
     if (hideIndex == -2) hideIndex = place
-    console.log('hideIndex', hideIndex, props.props.props)
+    console.log('IdiomsTopic place', place, answer)
+    console.log('hideIndex', hideIndex, props.props.props.word)
     const funClick = (index: number) => {
         if (current?.word[place] === answer[index]) {
             audioPlayer.playAudio('/win.wav')
@@ -34,7 +36,7 @@ function IdiomsTopic(props: { props: Ref }) {
     const funMouseEnter = () => {
         audioPlayer.playAudio('/click.wav')
     }
-    console.log('rerender???', hideIndex)
+    console.log('rerender???', hideIndex, current.word)
     return (
         <div>
             <div className='text-black flex-row flex justify-center'>
@@ -67,11 +69,11 @@ function IdiomsTopic(props: { props: Ref }) {
 }
 
 
-export default function IdiomsLayoutDetails(props: { props: ProductIdiom }) {
+export default function IdiomsLayoutDetails(props: { props: ProductIdiom, place: number, answer: string[] }) {
     const router = useRouter()
     const current = props.props
     const ttsRef = useRef<HTMLButtonElement>(null)
-    const place = getRandomInt(current.word.length)
+    const place = props.place
     const ttsProps = {
         className: ' shadow w-1/6 ml-10 hover:bg-blue-500 text-center bg-blue-200 p-2 rounded mt-4 ',
         button: '播放',
@@ -88,7 +90,7 @@ export default function IdiomsLayoutDetails(props: { props: ProductIdiom }) {
         <div
             className='content-center bg-blue-100 w-full h-full'>
             <div>
-                <IdiomsTopic props={{props: current, index: place}}/>
+                <IdiomsTopic props={{props: current, index: place, answer: props.answer}}/>
                 <div className='text-black text-4xl ml-20 mr-20'>
                     <div><span className='w-screen font-bold text-red-600'>典故: </span>
                         <span>{current?.derivation}</span>
@@ -108,7 +110,7 @@ export default function IdiomsLayoutDetails(props: { props: ProductIdiom }) {
                     className=' shadow w-1/6 hover:bg-blue-500 text-center bg-blue-200 p-2 rounded mt-4 '>
                     下一个
                 </button>
-                <Tts {...ttsProps}/>
+                {audioPlayer.isEnable() && <Tts {...ttsProps}/>}
             </div>
         </div>
     )

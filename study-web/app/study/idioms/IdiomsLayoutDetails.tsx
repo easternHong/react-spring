@@ -5,6 +5,7 @@ import {Tts} from "@/components/model/Tts";
 import React, {useRef, useState} from "react";
 import {getRandomInt, randomIdiomArray} from "@/components/service/RandomUtils";
 import {useRouter} from "next/navigation";
+import audioPlayer from "@/components/AudioPlayer";
 
 
 type Ref = {
@@ -23,15 +24,15 @@ function IdiomsTopic(props: { props: Ref }) {
     console.log('hideIndex', hideIndex, props.props.props)
     const funClick = (index: number) => {
         if (current?.word[place] === answer[index]) {
-            new Audio('/win.wav').play()
+            audioPlayer.playAudio('/win.wav')
             hideIndex = -1
             setHideIndex(Math.random)
         } else {
-            new Audio('/failed.wav').play()
+            audioPlayer.playAudio('/failed.wav')
         }
     }
     const funMouseEnter = () => {
-        new Audio('/click.wav').play()
+        audioPlayer.playAudio('/click.wav')
     }
     console.log('rerender???', hideIndex)
     return (

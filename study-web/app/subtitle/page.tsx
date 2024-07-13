@@ -3,7 +3,7 @@ import RenderImage from "@/components/ui/RenderImage";
 import {ImageSelector} from "@/components/ui/ImageSelector";
 import {useRef} from "react";
 
-export default function page() {
+export default function Page() {
 
     const textInputRef = useRef<HTMLTextAreaElement>(null);
     const renderImageRef = useRef<RenderImage>(null);
@@ -11,8 +11,8 @@ export default function page() {
 
     return (
         <main className='w-full h-screen'>
-            <div className='h-screen min-w-1/2 m-10'>
-                <div className='flex justify-center items-center h-1/4 w-full bg-blue-500 text-white'>
+            <div className='h-screen min-w-1/2 m-10 border-amber-800 rounded bg-blue-500'>
+                <div className='flex justify-center items-center h-1/4 w-full  text-white'>
                     <div>
                         <h1 className='text-4xl'>名人讲话</h1>
                         <p className="text-xl mt-5 text-center">“会讲，多讲几句”</p>
